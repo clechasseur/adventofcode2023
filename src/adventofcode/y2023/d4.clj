@@ -1,11 +1,11 @@
 (ns adventofcode.y2023.d4
-  (:require [adventofcode.y2023.input.d4 :as d4-i]
+  (:require [adventofcode.y2023.input.d4 :refer [input]]
             [clojure.set :refer [intersection]]
             [clojure.math :refer [pow]]))
 
 (defn- card
   [card-num]
-  (first (filter #(= card-num (:card %)) d4-i/input)))
+  (first (filter #(= card-num (:card %)) input)))
 
 (defn- num-winners
   [{win-nums :winning-numbers nums :numbers}]
@@ -13,14 +13,14 @@
 
 (defn part-1
   []
-  (->> d4-i/input
+  (->> input
        (map #(int (pow 2 (dec (num-winners %)))))
        (apply +)))
 
 (defn part-2
   []
   (let [copies (loop [copies {}
-                      card-num (:card (last d4-i/input))]
+                      card-num (:card (last input))]
                  (if (zero? card-num)
                    copies
                    (recur

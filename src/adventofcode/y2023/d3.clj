@@ -1,14 +1,14 @@
 (ns adventofcode.y2023.d3
-  (:require [adventofcode.y2023.input.d3 :as d3-i]
-            [adventofcode.util.pt :as pt-u]
-            [adventofcode.util.string :as str-u]))
+  (:require [adventofcode.y2023.input.d3 :refer [input]]
+            [adventofcode.util.pt :as pt]
+            [adventofcode.util.string :as str]))
 
 (defn- nums-around
   [pt]
-  (->> (pt-u/neighbours pt)
+  (->> (pt/neighbours pt)
        (map
          (fn [[x y]]
-           (when-let [row (get d3-i/input y)]
+           (when-let [row (get input y)]
              (when (and (>= x 0) (< x (count row)) (Character/isDigit ^char (get row x)))
                (let [start (loop [x x]
                             (if (or (< x 0) (not (Character/isDigit ^char (get row x))))
@@ -24,10 +24,10 @@
 
 (defn part-1
   []
-  (->> (range (count d3-i/input))
+  (->> (range (count input))
        (map
          (fn [row-idx]
-           (let [row (get d3-i/input row-idx)
+           (let [row (get input row-idx)
                  m (re-matcher #"\d+" row)]
              (loop [nums []]
                (let [found (.find m)]
@@ -35,11 +35,11 @@
                    nums
                    (let [num-start (.start m)
                          num-end (.end m)
-                         above-num (if-let [prev-row (get d3-i/input (dec row-idx))]
-                                     (str-u/safe-subs prev-row (dec num-start) (inc num-end))
+                         above-num (if-let [prev-row (get input (dec row-idx))]
+                                     (str/safe-subs prev-row (dec num-start) (inc num-end))
                                      "")
-                         below-num (if-let [next-row (get d3-i/input (inc row-idx))]
-                                     (str-u/safe-subs next-row (dec num-start) (inc num-end))
+                         below-num (if-let [next-row (get input (inc row-idx))]
+                                     (str/safe-subs next-row (dec num-start) (inc num-end))
                                      "")
                          before-num (if-let [before (get row (dec num-start))] (str before) "")
                          after-num (if-let [after (get row num-end)] (str after) "")
@@ -52,10 +52,10 @@
 
 (defn part-2
   []
-  (->> (range (count d3-i/input))
+  (->> (range (count input))
        (map
          (fn [row-idx]
-           (let [row (get d3-i/input row-idx)
+           (let [row (get input row-idx)
                  m (re-matcher #"\*" row)]
              (loop [gears []]
                (let [found (.find m)]
