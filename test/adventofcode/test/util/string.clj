@@ -1,4 +1,4 @@
-(ns adventofcode.util.string_test
+(ns ^:util adventofcode.test.util.string
   (:require [clojure.test :refer :all]
             [adventofcode.util.string :as str]))
 

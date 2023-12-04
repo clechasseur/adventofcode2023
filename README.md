@@ -10,14 +10,32 @@ My solutions to the Advent of Code 2023 puzzles. Using Clojure this year because
 
 ## Running the tests
 
-### All
+### All days
 
 ```sh
 lein test
 ```
 
-### Single
+### Single day
 
 ```sh
-lein test :only adventofcode.y2023-test/day-1-part-1
+lein test :only adventofcode.test.y2023.d1
+```
+
+### Single part
+
+```sh
+lein test :only adventofcode.test.y2023.d1/part1
+```
+
+### Utilities
+
+```sh
+lein test :util
+```
+
+### Everything
+
+```sh
+lein test :all
 ```

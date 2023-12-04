@@ -1,4 +1,4 @@
-(ns adventofcode.util.pt_test
+(ns ^:util adventofcode.test.util.pt
   (:require [clojure.test :refer :all]
             [adventofcode.util.pt :as pt]))
 

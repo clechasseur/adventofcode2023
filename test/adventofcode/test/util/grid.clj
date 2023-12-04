@@ -1,4 +1,4 @@
-(ns adventofcode.util.grid_test
+(ns ^:util adventofcode.test.util.grid
   (:require [clojure.test :refer :all]
             [adventofcode.util.grid :as grid]))
 
