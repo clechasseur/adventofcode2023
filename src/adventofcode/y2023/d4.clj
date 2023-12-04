@@ -3,6 +3,9 @@
             [clojure.set :refer [intersection]]
             [clojure.math :refer [pow]]))
 
+;; An example of the data format for the input:
+;; {:card 1 :winning-numbers #{23 42 66} :numbers #{11 7 42 12 67 13 23}}
+
 (defn- card
   [card-num]
   (first (filter #(= card-num (:card %)) input)))
