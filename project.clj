@@ -3,5 +3,7 @@
   :url "https://github.com/clechasseur/adventofcode2023"
   :license {:name "MIT"
             :url "https://github.com/clechasseur/adventofcode2023/blob/main/LICENSE"}
-  :dependencies [[org.clojure/clojure "1.11.1"]]
-  :repl-options {:init-ns adventofcode.y2023})
+  :dependencies [[org.clojure/clojure "1.11.1"]
+                 [org.clojure/math.combinatorics "0.2.0"]]
+  :repl-options {:init (do
+                         (use 'adventofcode.util.pt))})
