@@ -1,5 +1,5 @@
 (ns adventofcode.y2023.d3
-  (:require [adventofcode.y2023.input.d3 :as d3-input]
+  (:require [adventofcode.y2023.input.d3 :as d3-i]
             [adventofcode.util.pt :as pt-u]
             [adventofcode.util.string :as str-u]))
 
@@ -8,7 +8,7 @@
   (->> (pt-u/neighbours pt)
        (map
          (fn [[x y]]
-           (when-let [row (get d3-input/engine-input y)]
+           (when-let [row (get d3-i/input y)]
              (when (and (>= x 0) (< x (count row)) (Character/isDigit ^char (get row x)))
                (let [start (loop [x x]
                             (if (or (< x 0) (not (Character/isDigit ^char (get row x))))
@@ -24,10 +24,10 @@
 
 (defn part-1
   []
-  (->> (range (count d3-input/engine-input))
+  (->> (range (count d3-i/input))
        (map
          (fn [row-idx]
-           (let [row (get d3-input/engine-input row-idx)
+           (let [row (get d3-i/input row-idx)
                  m (re-matcher #"\d+" row)]
              (loop [nums []]
                (let [found (.find m)]
@@ -35,10 +35,10 @@
                    nums
                    (let [num-start (.start m)
                          num-end (.end m)
-                         above-num (if-let [prev-row (get d3-input/engine-input (dec row-idx))]
+                         above-num (if-let [prev-row (get d3-i/input (dec row-idx))]
                                      (str-u/safe-subs prev-row (dec num-start) (inc num-end))
                                      "")
-                         below-num (if-let [next-row (get d3-input/engine-input (inc row-idx))]
+                         below-num (if-let [next-row (get d3-i/input (inc row-idx))]
                                      (str-u/safe-subs next-row (dec num-start) (inc num-end))
                                      "")
                          before-num (if-let [before (get row (dec num-start))] (str before) "")
@@ -52,10 +52,10 @@
 
 (defn part-2
   []
-  (->> (range (count d3-input/engine-input))
+  (->> (range (count d3-i/input))
        (map
          (fn [row-idx]
-           (let [row (get d3-input/engine-input row-idx)
+           (let [row (get d3-i/input row-idx)
                  m (re-matcher #"\*" row)]
              (loop [gears []]
                (let [found (.find m)]

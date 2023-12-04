@@ -1,5 +1,5 @@
 (ns adventofcode.y2023.d2
-  (:require [adventofcode.y2023.input.d2 :as d2-input]))
+  (:require [adventofcode.y2023.input.d2 :as d2-i]))
 
 (defn- parse-game
   [game]
@@ -12,7 +12,7 @@
          (list (Integer/parseInt id)))))
 
 (def ^:private games
-  (map parse-game d2-input/games-input))
+  (map parse-game d2-i/input))
 
 (def ^:private part-1-targets
   {"red" 12 "green" 13 "blue" 14})

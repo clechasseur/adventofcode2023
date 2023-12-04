@@ -1,6 +1,6 @@
 (ns adventofcode.y2023.input.d1)
 
-(def calibration-values-input
+(def input
   ["hcpjssql4kjhbcqzkvr2fivebpllzqbkhg"
    "4threethreegctxg3dmbm1"
    "1lxk2hfmcgxtmps89mdvkl"

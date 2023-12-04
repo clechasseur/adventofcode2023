@@ -1,5 +1,5 @@
 (ns adventofcode.y2023.d1
-  (:require [adventofcode.y2023.input.d1 :as d1-input]
+  (:require [adventofcode.y2023.input.d1 :as d1-i]
             [clojure.string :as str]))
 
 (def ^:private numbers-identity-map
@@ -32,7 +32,7 @@
 
 (defn- sum-of-calibration-values
   [artistic]
-  (apply + (map (partial calibration-value artistic) d1-input/calibration-values-input)))
+  (apply + (map (partial calibration-value artistic) d1-i/input)))
 
 (defn part-1 [] (sum-of-calibration-values false))
 (defn part-2 [] (sum-of-calibration-values true))
