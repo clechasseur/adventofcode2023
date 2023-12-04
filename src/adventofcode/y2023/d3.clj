@@ -1,21 +1,11 @@
 (ns adventofcode.y2023.d3
-  (:require [adventofcode.y2023.input.d3 :as d3-input]))
-
-(defn- safe-subs
-  [s start end]
-  (let [start (max start 0)
-        end (min end (count s))]
-    (subs s start end)))
-
-(def ^:private neighbours
-  [[-1 -1] [0 -1] [1 -1]
-   [-1  0]        [1  0]
-   [-1  1] [0  1] [1  1]])
+  (:require [adventofcode.y2023.input.d3 :as d3-input]
+            [adventofcode.util.pt :as pt-u]
+            [adventofcode.util.string :as str-u]))
 
 (defn- nums-around
-  [row-idx col-idx]
-  (->> neighbours
-       (map #(map + [col-idx row-idx] %))
+  [pt]
+  (->> (pt-u/neighbours pt)
        (map
          (fn [[x y]]
            (when-let [row (get d3-input/engine-input y)]
@@ -46,10 +36,10 @@
                    (let [num-start (.start m)
                          num-end (.end m)
                          above-num (if-let [prev-row (get d3-input/engine-input (dec row-idx))]
-                                     (safe-subs prev-row (dec num-start) (inc num-end))
+                                     (str-u/safe-subs prev-row (dec num-start) (inc num-end))
                                      "")
                          below-num (if-let [next-row (get d3-input/engine-input (inc row-idx))]
-                                     (safe-subs next-row (dec num-start) (inc num-end))
+                                     (str-u/safe-subs next-row (dec num-start) (inc num-end))
                                      "")
                          before-num (if-let [before (get row (dec num-start))] (str before) "")
                          after-num (if-let [after (get row num-end)] (str after) "")
@@ -72,7 +62,7 @@
                  (if-not found
                    gears
                    (let [col-idx (.start m)
-                         around (nums-around row-idx col-idx)]
+                         around (nums-around [col-idx row-idx])]
                      (if (= (count around) 2)
                        (recur (conj gears (apply * around)))
                        (recur gears)))))))))
