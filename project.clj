@@ -6,6 +6,4 @@
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.clojure/math.combinatorics "0.2.0"]]
   :test-selectors {:default (complement :util)
-                   :util :util}
-  :repl-options {:init (do
-                         (use 'adventofcode.util.pt))})
+                   :util :util})
