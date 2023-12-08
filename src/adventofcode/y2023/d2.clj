@@ -1,7 +1,7 @@
 (ns adventofcode.y2023.d2
   (:require [adventofcode.y2023.input.d2 :refer [input]]))
 
-(defn- parse-game
+(defn parse-game
   [game]
   (let [[_ id reveals] (re-find #"^Game (\d+): (.*)$" game)]
     (->> reveals
@@ -11,10 +11,10 @@
          (map #(into (sorted-map) %))
          (list (Integer/parseInt id)))))
 
-(def ^:private games
+(def games
   (map parse-game input))
 
-(def ^:private part-1-targets
+(def part-1-targets
   {"red" 12 "green" 13 "blue" 14})
 
 (defn part-1

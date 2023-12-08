@@ -14,7 +14,7 @@
 
 ;; For part 1:
 
-(defn- source-to-dest
+(defn source-to-dest
   [ranges source]
   (->> ranges
        (map
@@ -25,14 +25,14 @@
        first
        (#(or % source))))
 
-(def ^:private maps
+(def maps
   (let [{maps :maps} input]
     (map
       (fn [{name :name ranges :ranges}]
         {:name name :fn #(source-to-dest ranges %)})
       maps)))
 
-(defn- seeds-to-location
+(defn seeds-to-location
   [seeds]
   (reduce
     (fn [sources {map-fn :fn}]
@@ -42,7 +42,7 @@
 
 ;; For part 2:
 
-(defn- seed-ranges
+(defn seed-ranges
   [seeds]
   (loop [result []
          [start length & rest :as seeds] seeds]
@@ -52,7 +52,7 @@
         (conj result [start (+ start length -1)])
         rest))))
 
-(defn- source-ranges-to-dest-ranges
+(defn source-ranges-to-dest-ranges
   [source-ranges {map-ranges :ranges}]
   (loop [[range & rest :as source-ranges] source-ranges
          dest-ranges []]
@@ -92,7 +92,7 @@
                                                map-ranges)]
           (apply conj dest-ranges remaining-ranges))))))
 
-(defn- seed-ranges-to-location-ranges
+(defn seed-ranges-to-location-ranges
   [seed-ranges]
   (reduce source-ranges-to-dest-ranges seed-ranges (:maps input)))
 

@@ -6,11 +6,11 @@
 ;; An example of the data format for the input:
 ;; {:card 1 :winning-numbers #{23 42 66} :numbers #{11 7 42 12 67 13 23}}
 
-(defn- card
+(defn card
   [card-num]
   (first (filter #(= card-num (:card %)) input)))
 
-(defn- num-winners
+(defn num-winners
   [{win-nums :winning-numbers nums :numbers}]
   (count (intersection win-nums nums)))
 

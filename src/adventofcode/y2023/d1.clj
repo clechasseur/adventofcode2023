@@ -2,21 +2,21 @@
   (:require [adventofcode.y2023.input.d1 :refer [input]]
             [clojure.string :as str]))
 
-(def ^:private numbers-identity-map
+(def numbers-identity-map
   (->> (range 1 10)
        (map str)
        (map #(vector % %))
        (into (sorted-map))))
-(def ^:private numbers-as-str
+(def numbers-as-str
   ["one" "two" "three" "four" "five" "six" "seven" "eight" "nine"])
-(def ^:private numbers-as-str-map
+(def numbers-as-str-map
   (zipmap numbers-as-str (range 1 10)))
 
-(defn- num-map-to-re
+(defn num-map-to-re
   [num-map]
   (re-pattern (str/join "|" (keys num-map))))
 
-(defn- calibration-value
+(defn calibration-value
   [artistic input]
   (let [num-map (if artistic
                   (conj numbers-identity-map numbers-as-str-map)
@@ -30,7 +30,7 @@
         last-digit (rev-map (re-find rev-re (str/reverse input)))]
     (Integer/parseInt (str first-digit last-digit))))
 
-(defn- sum-of-calibration-values
+(defn sum-of-calibration-values
   [artistic]
   (apply + (map (partial calibration-value artistic) input)))
 

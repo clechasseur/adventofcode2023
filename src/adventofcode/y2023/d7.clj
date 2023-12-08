@@ -3,33 +3,33 @@
             [clojure.math :refer [pow]]
             [clojure.math.combinatorics :as combo]))
 
-(def ^:private card-ranks
+(def card-ranks
   [:A :K :Q :J :T :9 :8 :7 :6 :5 :4 :3 :2 :loljk])
 
-(def ^:private hand-types
+(def hand-types
   [:five-of-a-kind :four-of-a-kind :full-house :three-of-a-kind :two-pairs :one-pair :high-card])
 
-(defn- rank
+(defn rank
   [values value]
   (->> (.indexOf values value)
        (- (count values))))
-(def ^:private card-rank (partial rank card-ranks))
-(def ^:private hand-type-rank (partial rank hand-types))
+(def card-rank (partial rank card-ranks))
+(def hand-type-rank (partial rank hand-types))
 
-(defn- card-to-match
+(defn card-to-match
   [cards]
   (or (first (filter (partial not= :loljk) cards)) :loljk))
 
-(defn- matches?
+(defn matches?
   [expected card]
   (or (= expected card) (= :loljk card)))
 
-(defn- all-same?
+(defn all-same?
   [cards]
   (let [expected (card-to-match cards)]
     (every? (partial matches? expected) cards)))
 
-(defn- hand-type
+(defn hand-type
   [{cards :cards}]
   (let [same (fn [n cards] (->> (combo/combinations (map-indexed vector cards) n)
                                 (filter #(all-same? (map second %)))
@@ -54,7 +54,7 @@
       (same? 2 cards)              :one-pair
       :else                        :high-card)))
 
-(defn- sort-hands
+(defn sort-hands
   [hands]
   (let [hand-rank (fn [{cards :cards :as hand}]
                     (let [t-rank (hand-type-rank (hand-type hand))
@@ -62,11 +62,11 @@
                       (apply + (map-indexed #(* (pow 15 %1) %2) (concat (reverse c-ranks) [t-rank])))))]
     (sort-by hand-rank hands)))
 
-(defn- wildify
+(defn wildify
   [{cards :cards bid :bid}]
   {:cards (replace {:J :loljk} cards) :bid bid})
 
-(defn- winnings
+(defn winnings
   [hands]
   (->> (sort-hands hands)
        (map-indexed #(* (inc %1) (:bid %2)))

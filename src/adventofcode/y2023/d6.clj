@@ -1,15 +1,15 @@
 (ns adventofcode.y2023.d6
   (:require [adventofcode.y2023.input.d6 :refer [input]]))
 
-(defn- distance-with-charge
+(defn distance-with-charge
   [charge-time total-time]
   (* charge-time (- total-time charge-time)))
 
-(defn- beats-record
+(defn beats-record
   [charge-time {total-time :time prev-record :distance}]
   (> (distance-with-charge charge-time total-time) prev-record))
 
-(defn- num-records
+(defn num-records
   [{total-time :time :as race}]
   (let [half-point (inc (quot total-time 2))
         smallest-charge-time (loop [charge-time (quot half-point 2)

@@ -3,7 +3,7 @@
             [adventofcode.util.pt :as pt]
             [adventofcode.util.string :as str]))
 
-(defn- nums-around
+(defn nums-around
   [pt]
   (->> (pt/neighbours pt)
        (map
