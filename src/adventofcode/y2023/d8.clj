@@ -2,6 +2,12 @@
   (:require [adventofcode.y2023.input.d8 :refer [input]]
             [clojure.math.numeric-tower :refer [lcm]]))
 
+;; An example of the data format for the input:
+;; {:moves "LLRLR..."
+;;  :paths {"AAA" ["BBB" "CCC"]
+;;          "BBB" ["DDD" "ZZZ"]
+;;          ...}}
+
 (def dir-fns
   {\L first \R second})
 
