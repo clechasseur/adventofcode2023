@@ -1,5 +1,5 @@
-(ns adventofcode.y2023.d1
-  (:require [adventofcode.y2023.input.d1 :refer [input]]
+(ns adventofcode.y2023.d01
+  (:require [adventofcode.y2023.input.d01 :refer [input]]
             [clojure.string :as str]))
 
 (def numbers-identity-map

@@ -1,5 +1,5 @@
-(ns adventofcode.y2023.d9
-  (:require [adventofcode.y2023.input.d9 :refer [input]]))
+(ns adventofcode.y2023.d09
+  (:require [adventofcode.y2023.input.d09 :refer [input]]))
 
 (defn pairs
   [coll]

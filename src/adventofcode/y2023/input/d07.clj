@@ -1,4 +1,4 @@
-(ns adventofcode.y2023.input.d7)
+(ns adventofcode.y2023.input.d07)
 
 (def input
   [{:cards [:Q :4 :Q :K :K] :bid 465}

@@ -1,4 +1,4 @@
-(ns adventofcode.y2023.input.d2)
+(ns adventofcode.y2023.input.d02)
 
 (def input
   ["Game 1: 1 green, 1 blue, 1 red; 3 green, 1 blue, 1 red; 4 green, 3 blue, 1 red; 4 green, 2 blue, 1 red; 3 blue, 3 green"

@@ -1,5 +1,5 @@
-(ns adventofcode.y2023.d6
-  (:require [adventofcode.y2023.input.d6 :refer [input]]))
+(ns adventofcode.y2023.d06
+  (:require [adventofcode.y2023.input.d06 :refer [input]]))
 
 (defn distance-with-charge
   [charge-time total-time]

@@ -1,5 +1,5 @@
-(ns adventofcode.y2023.d2
-  (:require [adventofcode.y2023.input.d2 :refer [input]]))
+(ns adventofcode.y2023.d02
+  (:require [adventofcode.y2023.input.d02 :refer [input]]))
 
 (defn parse-game
   [game]

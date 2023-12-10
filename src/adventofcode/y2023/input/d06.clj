@@ -1,4 +1,4 @@
-(ns adventofcode.y2023.input.d6)
+(ns adventofcode.y2023.input.d06)
 
 (def input
   (->> {:races [{:time 46 :distance 347}

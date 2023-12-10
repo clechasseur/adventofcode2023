@@ -1,5 +1,5 @@
-(ns adventofcode.y2023.d7
-  (:require [adventofcode.y2023.input.d7 :refer [input]]
+(ns adventofcode.y2023.d07
+  (:require [adventofcode.y2023.input.d07 :refer [input]]
             [clojure.math :refer [pow]]
             [clojure.math.combinatorics :as combo]))
 

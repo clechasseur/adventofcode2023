@@ -1,5 +1,5 @@
-(ns adventofcode.y2023.d8
-  (:require [adventofcode.y2023.input.d8 :refer [input]]
+(ns adventofcode.y2023.d08
+  (:require [adventofcode.y2023.input.d08 :refer [input]]
             [clojure.math.numeric-tower :refer [lcm]]))
 
 ;; An example of the data format for the input:

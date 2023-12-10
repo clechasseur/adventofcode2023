@@ -1,6 +1,6 @@
 (ns adventofcode.test.y2023.d4
   (:require [clojure.test :refer :all]
-            [adventofcode.y2023.d4 :as d4-s]))
+            [adventofcode.y2023.d04 :as d4-s]))
 
 (deftest part1
   (testing "Day 4 part 1"

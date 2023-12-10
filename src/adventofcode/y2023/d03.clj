@@ -1,5 +1,5 @@
-(ns adventofcode.y2023.d3
-  (:require [adventofcode.y2023.input.d3 :refer [input]]
+(ns adventofcode.y2023.d03
+  (:require [adventofcode.y2023.input.d03 :refer [input]]
             [adventofcode.util.pt :as pt]
             [adventofcode.util.string :as str]))
 

@@ -1,5 +1,5 @@
-(ns adventofcode.y2023.d4
-  (:require [adventofcode.y2023.input.d4 :refer [input]]
+(ns adventofcode.y2023.d04
+  (:require [adventofcode.y2023.input.d04 :refer [input]]
             [clojure.set :refer [intersection]]
             [clojure.math :refer [pow]]))
 

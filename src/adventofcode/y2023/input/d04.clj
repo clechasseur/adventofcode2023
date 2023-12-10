@@ -1,4 +1,4 @@
-(ns adventofcode.y2023.input.d4)
+(ns adventofcode.y2023.input.d04)
 
 (def input
   [{:card 1 :winning-numbers #{4 33 89 61 95 36 5 30 26 55} :numbers #{15 33 28 36 93 57 26 13 95 4 18 79 6 87 60 66 69 67 19 42 22 61 78 5 58}}

@@ -1,5 +1,5 @@
-(ns adventofcode.y2023.d5
-  (:require [adventofcode.y2023.input.d5 :refer [input]]))
+(ns adventofcode.y2023.d05
+  (:require [adventofcode.y2023.input.d05 :refer [input]]))
 
 ;; An example of the data format for the input:
 ;; {:seeds [1 2 3 ...]

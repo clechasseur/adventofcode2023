@@ -1,4 +1,4 @@
-(ns adventofcode.y2023.input.d1)
+(ns adventofcode.y2023.input.d01)
 
 (def input
   ["hcpjssql4kjhbcqzkvr2fivebpllzqbkhg"
