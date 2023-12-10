@@ -1,4 +1,4 @@
-(defproject adventofcode.y2023 "0.1.0-SNAPSHOT"
+(defproject github.io.clechasseur.adventofcode.y2023 "0.1.0-SNAPSHOT"
   :description "Advent of Code 2023 solutions from clechasseur"
   :url "https://github.com/clechasseur/adventofcode2023"
   :license {:name "MIT"
