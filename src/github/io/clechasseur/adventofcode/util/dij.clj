@@ -28,8 +28,7 @@
                                  [(assoc dist neighbour neighbour-dist) (assoc prev neighbour u)]
                                  [dist prev])))
                            [dist prev]
-                           neighbours)
-             ]
+                           neighbours)]
          (recur q dist prev))
        {:dist dist :prev prev}))))
 
