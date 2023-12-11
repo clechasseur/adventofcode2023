@@ -1,4 +1,4 @@
-(ns github.io.clechasseur.adventofcode.test.y2023.d7
+(ns ^:slow github.io.clechasseur.adventofcode.test.y2023.d7
   (:require [clojure.test :refer :all]
             [github.io.clechasseur.adventofcode.y2023.d07 :refer [part-1 part-2]]))
 

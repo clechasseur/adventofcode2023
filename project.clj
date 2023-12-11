@@ -6,5 +6,6 @@
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.clojure/math.combinatorics "0.2.0"]
                  [org.clojure/math.numeric-tower "0.0.5"]]
-  :test-selectors {:default (complement :util)
+  :test-selectors {:default (complement #(or (:slow %) (:util %)))
+                   :with-slow (complement :util)
                    :util :util})

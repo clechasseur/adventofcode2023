@@ -16,16 +16,22 @@ My solutions to the Advent of Code 2023 puzzles. Using Clojure this year because
 lein test
 ```
 
+Including slow tests:
+
+```sh
+lein test :with-slow
+```
+
 ### Both puzzles for one day
 
 ```sh
-lein test :only adventofcode.test.y2023.d1
+lein test :only github.io.clechasseur.adventofcode.test.y2023.d1
 ```
 
 ### Single puzzle
 
 ```sh
-lein test :only adventofcode.test.y2023.d1/part1
+lein test :only github.io.clechasseur.adventofcode.test.y2023.d1/part1
 ```
 
 ### Utilities
