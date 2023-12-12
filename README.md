@@ -25,13 +25,13 @@ lein test :with-slow
 ### Both puzzles for one day
 
 ```sh
-lein test :only github.io.clechasseur.adventofcode.test.y2023.d1
+lein test :day 1
 ```
 
 ### Single puzzle
 
 ```sh
-lein test :only github.io.clechasseur.adventofcode.test.y2023.d1/part1
+lein test :puzzle d1/part1
 ```
 
 ### Utilities
