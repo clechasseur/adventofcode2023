@@ -10,3 +10,15 @@
       (if (zero? dim)
         grid
         (recur (dec dim) grid)))))
+
+(defn locate
+  "Locates all points in a grid for which `(pred (get pt))` returns true."
+  ([pred grid]
+   (locate '() pred grid))
+  ([pt pred grid]
+   (cond
+     (seqable? grid) (->> (map-indexed vector grid)
+                          (mapcat (fn [[i grid]] (locate (conj pt i) pred grid)))
+                          (map (partial apply vector)))
+     (pred grid)     (list pt)
+     :else           '())))
