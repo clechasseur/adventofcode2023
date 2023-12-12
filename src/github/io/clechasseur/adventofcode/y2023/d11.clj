@@ -1,42 +1,49 @@
 (ns github.io.clechasseur.adventofcode.y2023.d11
   (:require [github.io.clechasseur.adventofcode.y2023.input.d11 :refer [input]]
-            [github.io.clechasseur.adventofcode.util.grid :as grid]
             [github.io.clechasseur.adventofcode.util.pt :as pt]
-            [clojure.math.combinatorics :as combo]
-            [clojure.string :as str]))
+            [github.io.clechasseur.adventofcode.util.grid :as grid]
+            [clojure.math.combinatorics :as combo]))
 
-(defn expand-line
-  ([line]
-   (expand-line 2 line))
-  ([exp line]
-   (if (every? (partial = \.) line)
-     (repeat exp line)
-     [line])))
+(defn empty-indices
+  [universe]
+  (->> (map-indexed
+         (fn [y line]
+           (when (every? (partial = \.) line)
+             y))
+         universe)
+       (filter some?)))
 
-(defn expand-universe
-  ([universe]
-   (expand-universe 2 universe))
-  ([exp universe]
-   (->> universe
-        (mapcat (partial expand-line exp))
-        (apply map vector)
-        (mapcat expand-line)
-        (apply map vector)
-        (mapv str/join))))
+(def empty-rows
+  (memoize (fn [] (empty-indices input))))
+(def empty-cols
+  (memoize (fn [] (empty-indices (apply map vector input)))))
+
+(defn translate-index
+  [exp empty index]
+  (->> (take-while (partial > index) empty)
+       count
+       (* (dec exp))
+       (+ index)))
+
+(defn translate-pt
+  [exp pt]
+  (mapv (partial translate-index exp) [(empty-cols) (empty-rows)] pt))
 
 (defn stars
-  [universe]
-  (grid/locate (partial = \#) universe))
+  [exp]
+  (map (partial translate-pt exp) (grid/locate (partial = \#) input)))
 
-(defn part-1
-  []
-  (->> input
-       expand-universe
-       stars
+(defn stars-manhattan-sum
+  [exp]
+  (->> (stars exp)
        (#(combo/combinations % 2))
        (map (partial apply pt/manhattan))
        (reduce +)))
 
+(defn part-1
+  []
+  (stars-manhattan-sum 2))
+
 (defn part-2
   []
-  23)
+  (stars-manhattan-sum 1000000))
