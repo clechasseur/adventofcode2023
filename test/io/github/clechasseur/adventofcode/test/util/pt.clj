@@ -66,4 +66,9 @@
     (let [pt-a [1 2 3]
           pt-b [6 1 9]
           actual (pt/manhattan pt-a pt-b)]
-      (is (= actual 12)))))
+      (is (= actual 12))))
+
+  (testing "Manhattan distance between two points with different number of dimensions doesn't work"
+    (let [pt-a [1 2]
+          pt-b [3 4 5]]
+      (is (thrown? AssertionError (pt/manhattan pt-a pt-b))))))

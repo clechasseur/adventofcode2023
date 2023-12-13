@@ -11,7 +11,7 @@
 
   Output is a hash map with:
   - :dist => Hash map of nodes to the distance from the starting point
-  - :pos  => Hash map of nodes to the previous node along the shortest path to that node"
+  - :prev => Hash map of nodes to the previous node along the shortest path to that node"
   ([start neighbours-fn]
    (build start neighbours-fn (constantly 1)))
   ([start neighbours-fn dist-fn]
@@ -33,6 +33,13 @@
        {:dist dist :prev prev}))))
 
 (defn path
-  "TODO"
-  [_start _end _prev]
-  nil)
+  "Returns the path from start to end, using the prev map returned via :pred by the `build` function.
+  If no path exists between start end and, returns nil."
+  ([start end prev]
+   (path '() start end prev))
+  ([path start cur prev]
+   (let [path (conj path cur)]
+     (if (= start cur)
+       path
+       (when-let [cur (prev cur)]
+         (recur path start cur prev))))))

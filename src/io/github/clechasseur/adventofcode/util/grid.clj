@@ -4,12 +4,11 @@
 (defn get
   "Gets a value in a grid. Returns nil if any dimension is out of bounds."
   [grid pt]
-  (loop [dim (dec (count pt))
-         grid grid]
-    (when-let [grid (clojure.core/get grid (clojure.core/get pt dim))]
-      (if (zero? dim)
-        grid
-        (recur (dec dim) grid)))))
+  {:pre [(or (empty? pt) (seqable? grid))]}
+  (if (empty? pt)
+    grid
+    (when-let [grid (clojure.core/get grid (last pt))]
+      (recur grid (drop-last pt)))))
 
 (defn locate
   "Locates all points in a grid for which `(pred (get pt))` returns true."
