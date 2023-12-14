@@ -81,3 +81,14 @@
     (testing "Find nothing in a 3D grid"
       (let [actual (grid/locate (constantly false) test-3d-grid)]
         (is (empty? actual))))))
+
+(deftest grid-locate-one
+  (testing "Find a single point"
+    (let [expected [0 2]
+          actual (grid/locate-one (partial = 7) test-2d-grid)]
+      (is (= actual expected))))
+  (testing "Find no matching point"
+    (let [actual (grid/locate-one neg? test-2d-grid)]
+      (is (nil? actual))))
+  (testing "Finding multiple matching points doesn't work"
+    (is (thrown? AssertionError (grid/locate-one even? test-2d-grid)))))

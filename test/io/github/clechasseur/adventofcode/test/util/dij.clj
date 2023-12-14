@@ -15,9 +15,9 @@
    "8168#321#1"
    "#22#######"
    "3333333##!"])
-(def start (first (grid/locate (partial = \S) test-terrain)))
-(def end (first (grid/locate (partial = \E) test-terrain)))
-(def stuck (first (grid/locate (partial = \!) test-terrain)))
+(def start (grid/locate-one (partial = \S) test-terrain))
+(def end (grid/locate-one (partial = \E) test-terrain))
+(def stuck (grid/locate-one (partial = \!) test-terrain))
 (def terrain-size (* (count test-terrain) (count (first test-terrain))))
 (def num-obstacles (count (grid/locate (partial = \#) test-terrain)))
 (defn neighbours
