@@ -5,6 +5,8 @@
   ([s start]
    (safe-subs s start (count s)))
   ([s start end]
-   (let [start (max start 0)
-         end (min end (count s))]
+   (let [len (count s)
+         minmax (fn [i] (min (max i 0) len))
+         start (minmax start)
+         end (minmax end)]
      (subs s start end))))

@@ -5,7 +5,12 @@
             :url "https://github.com/clechasseur/adventofcode2023/blob/main/LICENSE"}
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.clojure/math.combinatorics "0.2.0"]
-                 [org.clojure/math.numeric-tower "0.0.5"]]
+                 [org.clojure/math.numeric-tower "0.0.5"]
+                 [org.clojure/core.async "1.6.681"]]
+  :repl-options {:init (do
+                         (require '[clojure.math.combinatorics :as combo])
+                         (require '[clojure.math.numeric-tower :as tower])
+                         (require '[clojure.core.async :as a]))}
   :test-selectors {:default (complement #(or (:slow %) (:util %)))
                    :with-slow (complement :util)
                    :util :util
