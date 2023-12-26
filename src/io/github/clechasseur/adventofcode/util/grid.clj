@@ -28,5 +28,20 @@
   If no point is found, returns nil. If more than one point is found, an assertion is raised."
   [pred grid]
   (let [pts (seq (locate pred grid))]
-    (assert (<= (count pts) 1) (str "Expected to locate at most one point, found " (count pts)))
+    (assert (<= (count pts) 1) (str "Expected to locate at most one point, found " (count pts) ": " pts))
     (first pts)))
+
+(defn dims
+  "Returns the number of dimensions in the grid."
+  [grid]
+  (loop [grid grid
+         prev-dims 0]
+    (if-not (seqable? grid)
+      prev-dims
+      (recur (first grid) (inc prev-dims)))))
+
+(defn transpose
+  "Transposes a 2-dimensional matrix."
+  [grid]
+  {:pre [(= (dims grid) 2)]}
+  (apply mapv vector grid))

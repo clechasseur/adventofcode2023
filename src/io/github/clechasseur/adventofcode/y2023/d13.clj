@@ -1,11 +1,12 @@
 (ns io.github.clechasseur.adventofcode.y2023.d13
   (:require [io.github.clechasseur.adventofcode.y2023.input.d13 :refer [input]]
             [io.github.clechasseur.adventofcode.util.string :refer [safe-subs]]
+            [io.github.clechasseur.adventofcode.util.grid :as grid]
             [clojure.math.combinatorics :as combo]))
 
 (defn transpose
   [pattern]
-  (mapv (partial apply str) (apply map vector pattern)))
+  (mapv (partial apply str) (grid/transpose pattern)))
 
 (defn reflect-h
   [pattern flip-row]

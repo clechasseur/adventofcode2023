@@ -6,11 +6,19 @@
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.clojure/math.combinatorics "0.2.0"]
                  [org.clojure/math.numeric-tower "0.0.5"]
-                 [org.clojure/core.async "1.6.681"]]
+                 [org.clojure/core.async "1.6.681"]
+                 [net.mikera/core.matrix "0.63.0"]]
   :repl-options {:init (do
+                         (require '[clojure.string :as str])
                          (require '[clojure.math.combinatorics :as combo])
                          (require '[clojure.math.numeric-tower :as tower])
-                         (require '[clojure.core.async :as a]))}
+                         (require '[clojure.core.async :as a])
+                         (require '[clojure.core.matrix :as matrix])
+                         (require '[io.github.clechasseur.adventofcode.util.dij :as dij])
+                         (require '[io.github.clechasseur.adventofcode.util.grid :as grid])
+                         (require '[io.github.clechasseur.adventofcode.util.pt :as pt])
+                         (require '[io.github.clechasseur.adventofcode.util.string :as u-string])
+                         (require '[io.github.clechasseur.adventofcode.util.time :as time]))}
   :test-selectors {:default (complement #(or (:slow %) (:util %)))
                    :with-slow (complement :util)
                    :util :util
