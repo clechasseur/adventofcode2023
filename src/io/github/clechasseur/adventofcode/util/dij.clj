@@ -1,6 +1,6 @@
 (ns io.github.clechasseur.adventofcode.util.dij)
 
-(def ^:private inf (Long/MAX_VALUE))
+(def ^:private inf Long/MAX_VALUE)
 
 (defn build
   "Implementation of Dijkstra pathfinding algorithm.
@@ -33,8 +33,8 @@
        {:dist dist :prev prev}))))
 
 (defn path
-  "Returns the path from start to end, using the prev map returned via :pred by the `build` function.
-  If no path exists between start end and, returns nil."
+  "Returns the path from start to end, using the prev map returned via :prev by the `build` function.
+  If no path exists between start and end, returns nil."
   ([start end prev]
    (path '() start end prev))
   ([path start cur prev]
