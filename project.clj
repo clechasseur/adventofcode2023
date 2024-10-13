@@ -3,8 +3,8 @@
   :url "https://github.com/clechasseur/adventofcode2023"
   :license {:name "MIT"
             :url "https://github.com/clechasseur/adventofcode2023/blob/main/LICENSE"}
-  :dependencies [[org.clojure/clojure "1.11.1"]
-                 [org.clojure/math.combinatorics "0.2.0"]
+  :dependencies [[org.clojure/clojure "1.12.0"]
+                 [org.clojure/math.combinatorics "0.3.0"]
                  [org.clojure/math.numeric-tower "0.0.5"]
                  [org.clojure/core.async "1.6.681"]
                  [net.mikera/core.matrix "0.63.0"]]
